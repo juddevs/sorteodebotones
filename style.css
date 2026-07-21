@@ -18,12 +18,14 @@
 body {
     font-family: 'Outfit', sans-serif;
     background-color: var(--bg-color);
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
     color: var(--text-color);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    position: relative;
 }
 
 .container {
@@ -155,4 +157,84 @@ body {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+/* Pirate Ships Background */
+.ocean-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.ship {
+    position: absolute;
+    left: 0;
+    will-change: transform;
+}
+
+.ship-inner {
+    display: inline-block;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.8));
+    will-change: transform;
+}
+
+.ship-1 {
+    bottom: 8%;
+    animation: sail 40s linear infinite;
+}
+
+.ship-1 .ship-inner {
+    font-size: 8rem;
+    opacity: 0.25;
+    animation: bob 6s ease-in-out infinite;
+}
+
+.ship-2 {
+    bottom: 35%;
+    animation: sail 60s linear infinite;
+    animation-delay: -25s;
+}
+
+.ship-2 .ship-inner {
+    font-size: 3.5rem;
+    opacity: 0.1;
+    filter: blur(2px) drop-shadow(0 5px 5px rgba(0,0,0,0.5));
+    animation: bob 8s ease-in-out infinite;
+    animation-delay: -3s;
+}
+
+.ship-3 {
+    bottom: 20%;
+    animation: sail 50s linear infinite;
+    animation-delay: -15s;
+}
+
+.ship-3 .ship-inner {
+    font-size: 5rem;
+    opacity: 0.15;
+    filter: blur(1px) drop-shadow(0 8px 10px rgba(0,0,0,0.6));
+    animation: bob 7s ease-in-out infinite;
+    animation-delay: -1s;
+}
+
+@keyframes sail {
+    from {
+        transform: translateX(-20vw);
+    }
+    to {
+        transform: translateX(120vw);
+    }
+}
+
+@keyframes bob {
+    0%, 100% {
+        transform: translateY(0) rotate(-4deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(4deg);
+    }
 }
